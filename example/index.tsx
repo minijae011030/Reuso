@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom/client"; // React 18 이상에서는 react-dom/client 사용
+import ReactDOM from "react-dom/client";
 import { Button } from "mylib";
 
 const App = () => (
@@ -9,9 +9,8 @@ const App = () => (
   </div>
 );
 
-// React 18 방식으로 수정
 const rootElement = document.getElementById("root");
 if (rootElement) {
-  const root = ReactDOM.createRoot(rootElement); // createRoot 사용
+  const root = ReactDOM.createRoot(rootElement);
   root.render(<App />);
 }
