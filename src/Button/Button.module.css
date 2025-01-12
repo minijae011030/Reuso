@@ -1,23 +1,47 @@
 .button {
+  transition: all 0.3s ease;
   cursor: pointer;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  align-items: center;
-  transition: background-color 0.3s ease, color 0.3s ease,
-    border-color 0.3s ease;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 .button:hover {
   filter: brightness(0.95);
 }
 
+.button_disabled {
+  cursor: not-allowed;
+  background: #d3d3d3;
+  color: #a7a7a7;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 5px;
+}
+
 .button_transparent {
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  align-items: center;
-  transition: background-color 0.3s ease, color 0.3s ease,
-    border-color 0.3s ease;
+  background: transparent;
+  border: none;
+}
+
+.button_filled {
+  border: none;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.button_filled:hover {
+  filter: brightness(1.1);
+}
+
+.button_outline {
+  background: transparent;
+  border: 1px solid var(--button-color, #000);
+  color: var(--button-color, #000);
+  transition: all 0.3s ease;
+}
+
+.button_outline:hover {
+  background: var(--hover-color, rgba(0, 0, 0, 0.05));
 }

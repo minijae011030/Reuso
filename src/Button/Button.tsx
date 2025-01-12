@@ -6,32 +6,45 @@ interface ButtonProps {
   width?: number;
   height?: number;
   color?: string;
+  disabled?: boolean;
   children?: ReactNode;
   variant?: "default" | "light" | "filled" | "transparent" | "outline";
   onClick?: () => void;
 }
 
 export const Button: React.FC<ButtonProps> = ({
-  color,
+  color = "#007bff",
   width = 170,
   height = 50,
   children,
   variant = "default",
+  disabled = false,
   onClick,
 }) => {
+  if (disabled) {
+    return (
+      <button
+        className={styles.button_disabled}
+        style={{
+          width,
+          height,
+        }}
+        disabled
+      >
+        {children}
+      </button>
+    );
+  }
+
   if (variant === "transparent") {
     return (
       <button
-        className={styles.button_transparent}
+        className={`${styles.button} ${styles.button_transparent}`}
         onClick={onClick}
         style={{
-          width: width,
-          height: height,
-          fontSize: "16px",
-          border: "none",
-          borderRadius: "5px",
-          background: "white",
-          color: color,
+          width,
+          height,
+          color,
         }}
       >
         {children}
@@ -46,16 +59,14 @@ export const Button: React.FC<ButtonProps> = ({
 
     return (
       <button
-        className={styles.button}
+        className={`${styles.button}`}
         onClick={onClick}
         style={{
-          width: width,
-          height: height,
-          fontSize: "16px",
+          width,
+          height,
           border: `1px solid ${color}`,
-          borderRadius: "5px",
           background: lighterColor,
-          color: color,
+          color,
         }}
       >
         {children}
@@ -64,19 +75,22 @@ export const Button: React.FC<ButtonProps> = ({
   }
 
   if (variant === "outline") {
+    const lighterColor = Color(color)
+      .lighten(0.9)
+      .hex();
+
     return (
       <button
-        className={styles.button}
+        className={`${styles.button} ${styles.button_outline}`}
         onClick={onClick}
-        style={{
-          width: width,
-          height: height,
-          fontSize: "16px",
-          border: `1px solid ${color}`,
-          borderRadius: "5px",
-          background: "white",
-          color: color,
-        }}
+        style={
+          {
+            width,
+            height,
+            "--button-color": color,
+            "--hover-color": lighterColor,
+          } as React.CSSProperties
+        }
       >
         {children}
       </button>
@@ -86,16 +100,12 @@ export const Button: React.FC<ButtonProps> = ({
   if (variant === "filled") {
     return (
       <button
-        className={styles.button}
+        className={`${styles.button} ${styles.button_filled}`}
         onClick={onClick}
         style={{
-          width: width,
-          height: height,
-          fontSize: "16px",
-          border: `2px solid ${color}`,
-          borderRadius: "5px",
+          width,
+          height,
           background: color,
-          color: "#fff",
         }}
       >
         {children}
@@ -105,11 +115,11 @@ export const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
-      className={styles.button}
+      className={`${styles.button}`}
       onClick={onClick}
       style={{
-        width: width,
-        height: height,
+        width,
+        height,
         fontSize: "16px",
         border: "1px solid rgb(160, 160, 160)",
         borderRadius: "5px",
