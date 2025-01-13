@@ -24,48 +24,16 @@ export const Input: React.FC<InputProps> = ({
     onChange("");
   };
 
-  if (variant === "filled") {
-    return (
-      <div className={styles.input_container}>
-        <input
-          className={styles.filled_input}
-          type="text"
-          value={value}
-          onChange={handleChange}
-          placeholder={placeholder || "텍스트를 입력해주세요."}
-        />
-        {clearButton && value && (
-          <button className={styles.clear_button} onClick={handleClear}>
-            ✕
-          </button>
-        )}
-      </div>
-    );
-  }
-
-  if (variant === "unstyled") {
-    return (
-      <div className={styles.input_container}>
-        <input
-          className={styles.unstyled_input}
-          type="text"
-          value={value}
-          onChange={handleChange}
-          placeholder={placeholder || "텍스트를 입력해주세요."}
-        />
-        {clearButton && value && (
-          <button className={styles.clear_button} onClick={handleClear}>
-            ✕
-          </button>
-        )}
-      </div>
-    );
-  }
-
   return (
     <div className={styles.input_container}>
       <input
-        className={styles.input}
+        className={
+          variant === "filled"
+            ? styles.filled_input
+            : variant === "unstyled"
+            ? styles.unstyled_input
+            : styles.input
+        }
         type="text"
         value={value}
         onChange={handleChange}

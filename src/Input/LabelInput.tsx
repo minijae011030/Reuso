@@ -5,7 +5,7 @@ interface LabelInputProps {
   value: string;
   onChange: (value: string) => void;
   placeholder?: string;
-  variant?: "default" | "filled" | "unstyled";
+  variant?: "default" | "filled";
   clearButton?: boolean;
   label?: string;
   description?: string;
@@ -31,13 +31,21 @@ export const LabelInput: React.FC<LabelInputProps> = ({
     onChange("");
   };
 
+  const inputClassName = [
+    styles.input,
+    variant === "filled" ? styles.filled_input : "",
+    isError ? styles.error_input : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
+
   return (
     <div className={styles.label_container}>
       <p className={styles.label}>{label}</p>
       <p className={styles.description}>{description}</p>
       <div className={styles.input_container}>
         <input
-          className={styles.input}
+          className={inputClassName}
           type="text"
           value={value}
           onChange={handleChange}
