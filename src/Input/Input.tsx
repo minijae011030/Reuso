@@ -2,6 +2,9 @@ import React from "react";
 import styles from "./Input.module.css";
 
 interface InputProps {
+  id?: string;
+  name?: string;
+  autocomplete?: string;
   value: string;
   onChange: (value: string) => void;
   placeholder?: string;
@@ -12,6 +15,9 @@ interface InputProps {
 }
 
 export const Input: React.FC<InputProps> = ({
+  id,
+  name,
+  autocomplete,
   value,
   onChange,
   placeholder,
@@ -41,6 +47,9 @@ export const Input: React.FC<InputProps> = ({
   return (
     <div className={styles.input_container}>
       <input
+        id={id}
+        name={name}
+        autoComplete={autocomplete}
         className={inputClassName}
         type="text"
         value={value}

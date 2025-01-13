@@ -2,6 +2,9 @@ import React from "react";
 import styles from "./Input.module.css";
 
 interface LabelInputProps {
+  id?: string;
+  name?: string;
+  autocomplete?: string;
   value: string;
   onChange: (value: string) => void;
   placeholder?: string;
@@ -14,7 +17,10 @@ interface LabelInputProps {
   isError?: boolean;
 }
 export const LabelInput: React.FC<LabelInputProps> = ({
+  id,
+  name,
   value,
+  autocomplete,
   onChange,
   placeholder,
   variant,
@@ -49,6 +55,9 @@ export const LabelInput: React.FC<LabelInputProps> = ({
       <p className={styles.description}>{description}</p>
       <div className={styles.input_container}>
         <input
+          id={id}
+          name={name}
+          autoComplete={autocomplete}
           className={inputClassName}
           type="text"
           value={value}
