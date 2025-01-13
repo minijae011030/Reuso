@@ -5,13 +5,15 @@ interface InputProps {
   id?: string;
   name?: string;
   autocomplete?: string;
-  value: string;
-  onChange: (value: string) => void;
+  value?: string;
+  onChange?: (value: string) => void;
   placeholder?: string;
   variant?: "default" | "filled" | "unstyled";
   clearButton?: boolean;
   isDisabled?: boolean;
   isError?: boolean;
+  width?: number;
+  height?: number;
 }
 
 export const Input: React.FC<InputProps> = ({
@@ -25,13 +27,19 @@ export const Input: React.FC<InputProps> = ({
   clearButton = false,
   isDisabled = false,
   isError = false,
+  width = 300,
+  height = 40,
 }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onChange(e.target.value);
+    if (onChange) {
+      onChange(e.target.value);
+    }
   };
 
   const handleClear = () => {
-    onChange("");
+    if (onChange) {
+      onChange("");
+    }
   };
 
   const inputClassName = [
@@ -45,8 +53,9 @@ export const Input: React.FC<InputProps> = ({
     .join(" ");
 
   return (
-    <div className={styles.input_container}>
+    <div style={{ width: width }} className={styles.input_container}>
       <input
+        style={{ height: height }}
         id={id}
         name={name}
         autoComplete={autocomplete}

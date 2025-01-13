@@ -5,8 +5,8 @@ interface LabelInputProps {
   id?: string;
   name?: string;
   autocomplete?: string;
-  value: string;
-  onChange: (value: string) => void;
+  value?: string;
+  onChange?: (value: string) => void;
   placeholder?: string;
   variant?: "default" | "filled";
   clearButton?: boolean;
@@ -15,6 +15,8 @@ interface LabelInputProps {
   isDisabled?: boolean;
   error?: string;
   isError?: boolean;
+  width?: number;
+  height?: number;
 }
 export const LabelInput: React.FC<LabelInputProps> = ({
   id,
@@ -30,13 +32,19 @@ export const LabelInput: React.FC<LabelInputProps> = ({
   isDisabled,
   error,
   isError = false,
+  width = 300,
+  height = 40,
 }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onChange(e.target.value);
+    if (onChange) {
+      onChange(e.target.value);
+    }
   };
 
   const handleClear = () => {
-    onChange("");
+    if (onChange) {
+      onChange("");
+    }
   };
 
   const inputClassName = [
@@ -50,11 +58,12 @@ export const LabelInput: React.FC<LabelInputProps> = ({
     .join(" ");
 
   return (
-    <div className={styles.label_container}>
+    <div style={{ width: width }} className={styles.label_container}>
       <p className={styles.label}>{label}</p>
       <p className={styles.description}>{description}</p>
-      <div className={styles.input_container}>
+      <div style={{ width: width }} className={styles.input_container}>
         <input
+          style={{ height: height }}
           id={id}
           name={name}
           autoComplete={autocomplete}
