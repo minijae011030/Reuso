@@ -9,6 +9,7 @@ interface LabelInputProps {
   clearButton?: boolean;
   label?: string;
   description?: string;
+  isDisabled?: boolean;
   error?: string;
   isError?: boolean;
 }
@@ -20,6 +21,7 @@ export const LabelInput: React.FC<LabelInputProps> = ({
   clearButton,
   label,
   description,
+  isDisabled,
   error,
   isError = false,
 }) => {
@@ -34,7 +36,9 @@ export const LabelInput: React.FC<LabelInputProps> = ({
   const inputClassName = [
     styles.input,
     variant === "filled" ? styles.filled_input : "",
+
     isError ? styles.error_input : "",
+    isDisabled ? styles.disabled_input : "",
   ]
     .filter(Boolean)
     .join(" ");
@@ -49,9 +53,10 @@ export const LabelInput: React.FC<LabelInputProps> = ({
           type="text"
           value={value}
           onChange={handleChange}
+          disabled={isDisabled}
           placeholder={placeholder || "텍스트를 입력해주세요."}
         />
-        {clearButton && value && (
+        {clearButton && !isDisabled && value && (
           <button className={styles.clear_button} onClick={handleClear}>
             ✕
           </button>

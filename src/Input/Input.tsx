@@ -7,6 +7,8 @@ interface InputProps {
   placeholder?: string;
   variant?: "default" | "filled" | "unstyled";
   clearButton?: boolean;
+  isDisabled?: boolean;
+  isError?: boolean;
 }
 
 export const Input: React.FC<InputProps> = ({
@@ -15,6 +17,8 @@ export const Input: React.FC<InputProps> = ({
   placeholder,
   variant,
   clearButton = false,
+  isDisabled = false,
+  isError = false,
 }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChange(e.target.value);
@@ -24,22 +28,27 @@ export const Input: React.FC<InputProps> = ({
     onChange("");
   };
 
+  const inputClassName = [
+    styles.input,
+    variant === "filled" ? styles.filled_input : "",
+    variant === "unstyled" ? styles.unstyled_input : "",
+    isError ? styles.error_input : "",
+    isDisabled ? styles.disabled_input : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
+
   return (
     <div className={styles.input_container}>
       <input
-        className={
-          variant === "filled"
-            ? styles.filled_input
-            : variant === "unstyled"
-            ? styles.unstyled_input
-            : styles.input
-        }
+        className={inputClassName}
         type="text"
         value={value}
         onChange={handleChange}
         placeholder={placeholder || "텍스트를 입력해주세요."}
+        disabled={isDisabled}
       />
-      {clearButton && value && (
+      {clearButton && !isDisabled && value && (
         <button className={styles.clear_button} onClick={handleClear}>
           ✕
         </button>
