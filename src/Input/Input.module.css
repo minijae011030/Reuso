@@ -5,6 +5,7 @@
   align-items: center;
 }
 
+/* input */
 .input {
   width: 100%;
   border: 1.3px solid rgb(193, 193, 193);
@@ -12,17 +13,6 @@
   padding: 0 0 0 15px;
   font-size: 16px;
   transition: border-color 0.3s ease;
-}
-
-.input:focus {
-  border-color: rgb(42, 110, 255);
-  outline: none;
-}
-
-.input::placeholder {
-  color: rgb(193, 193, 193);
-  transition: color 0.3s ease;
-  font-size: 14px;
 }
 
 .filled_input {
@@ -36,17 +26,6 @@
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.filled_input:focus {
-  border-color: rgb(42, 110, 255);
-  outline: none;
-}
-
-.filled_input::placeholder {
-  color: rgb(193, 193, 193);
-  transition: color 0.3s ease;
-  font-size: 14px;
-}
-
 .unstyled_input {
   width: 100%;
   height: 40px;
@@ -58,42 +37,22 @@
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+.input:focus,
+.filled_input:focus,
 .unstyled_input:focus {
+  border-color: rgb(42, 110, 255);
   outline: none;
 }
 
+.input::placeholder,
+.filled_input::placeholder,
 .unstyled_input::placeholder {
   color: rgb(193, 193, 193);
   transition: color 0.3s ease;
   font-size: 14px;
 }
 
-.clear_button {
-  position: absolute;
-  top: 50%;
-  right: 10px;
-  transform: translateY(-50%);
-  border: none;
-  background: none;
-  color: gray;
-  background-color: transparent;
-  cursor: pointer;
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  transition: color 0.3s ease;
-  width: 30px;
-  height: 30px;
-}
-
-.clear_button:hover {
-  border: 1px solid rgba(228, 228, 228, 0.651);
-  background-color: rgba(228, 228, 228, 0.651);
-  border-radius: 5px;
-}
-
+/* label input */
 .label_container {
   position: relative;
   display: flex;
@@ -127,4 +86,67 @@
 .disabled_input {
   background-color: rgb(247, 247, 247);
   cursor: not-allowed;
+}
+
+/* clear button */
+.clear_button {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  color: gray;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: color 0.3s ease;
+  width: 30px;
+  height: 30px;
+}
+
+.clear_button:hover {
+  border: 1px solid rgba(228, 228, 228, 0.651);
+  background-color: rgba(228, 228, 228, 0.651);
+  border-radius: 5px;
+}
+
+/* dropdown */
+.dropdown {
+  width: 300px;
+  border-radius: 5px;
+  border: 1.3px solid rgb(193, 193, 193);
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><path fill="black" d="M5 7 L0 2 L10 2 Z"/></svg>')
+    no-repeat;
+  background-position: calc(100% - 20px) center;
+  background-size: 8px 8px;
+  transition: border-color 0.3s ease;
+}
+
+.filled_dropdown {
+  border: 1.5px solid rgb(241, 243, 245);
+  width: 300px;
+  border-radius: 5px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: rgb(241, 243, 245)
+    url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><path fill="black" d="M5 7 L0 2 L10 2 Z"/></svg>')
+    no-repeat;
+  background-position: calc(100% - 20px) center;
+  background-size: 8px 8px;
+  transition: border-color 0.3s ease;
+}
+
+.dropdown:focus,
+.filled_dropdown:focus {
+  border-color: rgb(42, 110, 255);
+  outline: none;
 }
