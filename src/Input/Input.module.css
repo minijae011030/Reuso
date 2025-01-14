@@ -18,7 +18,7 @@
 .filled_input {
   width: 100%;
   height: 40px;
-  border: 1.5px solid rgb(241, 243, 245);
+  border: 1.3px solid rgb(241, 243, 245);
   background-color: rgb(241, 243, 245);
   border-radius: 5px;
   padding: 0 0 0 15px;
@@ -52,12 +52,11 @@
   font-size: 14px;
 }
 
-/* label input */
+/* label */
 .label_container {
   position: relative;
   display: flex;
   flex-direction: column;
-
   justify-content: left;
 }
 
@@ -73,6 +72,7 @@
   margin-bottom: 4px;
 }
 
+/* error */
 .error {
   font-size: 11px;
   color: red;
@@ -81,6 +81,15 @@
 
 .error_input {
   border-color: red;
+  color: red;
+}
+
+.error_input:focus {
+  border-color: red !important;
+}
+
+.error_input::placeholder {
+  color: red;
 }
 
 .disabled_input {
@@ -118,6 +127,7 @@
 /* dropdown */
 .dropdown {
   width: 300px;
+  text-indent: 5px;
   border-radius: 5px;
   border: 1.3px solid rgb(193, 193, 193);
   appearance: none;
@@ -131,7 +141,8 @@
 }
 
 .filled_dropdown {
-  border: 1.5px solid rgb(241, 243, 245);
+  border: 1.3px solid rgb(241, 243, 245);
+  text-indent: 5px;
   width: 300px;
   border-radius: 5px;
   appearance: none;
