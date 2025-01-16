@@ -1,3 +1,6 @@
 node_modules
-example/
 dist/
+.parcel-cache/
+.parcelrc
+.DS_Store
+*.log

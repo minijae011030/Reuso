@@ -1,0 +1,22 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "description": "Example project to test mylib",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel index.html --no-cache",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "강민재",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/config-default": "^2.13.3",
+    "@parcel/transformer-react-refresh-babel": "^2.0.0-alpha.3",
+    "parcel": "^2.13.3",
+    "process": "^0.11.10",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-refresh": "^0.16.0"
+  }
+}
